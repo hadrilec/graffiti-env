@@ -1,4 +1,4 @@
-FROM rocker/shiny-verse
+FROM rocker/shiny-verse:3.6.3
 
 ENV http_proxy=http://proxy-rie.http.insee.fr:8080
 ENV https_proxy=http://proxy-rie.http.insee.fr:8080
