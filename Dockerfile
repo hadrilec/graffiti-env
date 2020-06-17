@@ -16,9 +16,9 @@ RUN R -e "install.packages(c('shinyWidgets', 'shinyjs'), repos='https://cran.rst
 RUN R -e "install.packages('DT',dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
 RUN R -e "install.packages(c('lubridate', 'zoo'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "install.packages(c('rmarkdown', 'plotly'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "install.packages(c('rmarkdown', 'plotly', 'highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "install.packages(c('fredr', 'eia', 'eurostat', 'Quandl'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "install.packages(c('eia', 'eurostat', 'Quandl'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch', 'RJSONIO'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('xml2', 'rvest'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
