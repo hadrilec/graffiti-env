@@ -13,7 +13,7 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
 RUN R -e "install.packages(c('shiny', 'tidyverse'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('shinydashboard', 'shinydashboardPlus'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('shinyWidgets', 'shinyjs'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "install.packages('DT',dependencies=TRUE, repos='http://cran.rstudio.com/')"
+RUN R -e "install.packages(c('DT', 'rhandsontable'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
 RUN R -e "install.packages(c('lubridate', 'zoo'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('rmarkdown', 'plotly', 'highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
@@ -24,4 +24,6 @@ RUN R -e "install.packages(c('xml2', 'rvest'), repos='https://cran.rstudio.com/'
 
 RUN R -e "install.packages(c('devtools'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "devtools::install_github('tutuchan/shinyflags')"
+
+RUN R -e "install.packages(c('aws.s3'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
