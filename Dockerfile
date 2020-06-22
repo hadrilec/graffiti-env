@@ -10,6 +10,8 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libgdal-dev \
  libudunits2-dev \
  libxml2-dev
+ 
+RUN R -e "install.packages(c('highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
 RUN R -e "install.packages(c('shiny', 'tidyverse'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('shinydashboard', 'shinydashboardPlus'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
@@ -17,7 +19,7 @@ RUN R -e "install.packages(c('shinyWidgets', 'shinyjs'), repos='https://cran.rst
 RUN R -e "install.packages(c('DT', 'rhandsontable'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
 
 RUN R -e "install.packages(c('lubridate', 'zoo'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "install.packages(c('rmarkdown', 'plotly', 'highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "install.packages(c('rmarkdown', 'plotly'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('eia', 'eurostat', 'Quandl'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch', 'RJSONIO'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
