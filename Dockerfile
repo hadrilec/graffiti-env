@@ -8,7 +8,8 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
  libssl-dev \
  libgdal-dev \
- libudunits2-dev
+ libudunits2-dev \
+ libxml2-dev
 
 RUN R -e "install.packages(c('shiny', 'tidyverse'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('shinydashboard', 'shinydashboardPlus'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
