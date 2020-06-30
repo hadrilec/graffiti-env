@@ -17,6 +17,6 @@ RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashbo
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch', 'RJSONIO','xml2', 'rvest','devtools', 'aws.s3'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "devtools::install_github('tutuchan/shinyflags')"
+RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr')"
 
 
