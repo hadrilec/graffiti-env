@@ -10,7 +10,8 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends \
  libssl-dev \
  libgdal-dev \
- libudunits2-dev 
+ libudunits2-dev \
+ curl
 #libxml2-dev
 
 # Add certificates (config https)
