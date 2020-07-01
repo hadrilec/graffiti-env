@@ -16,7 +16,7 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
 # Add certificates (config https)
 RUN curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACRacine.crt >> /usr/local/share/ca-certificates/ac-racine-insee.crt \
     && curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACSubordonnee.crt >> /usr/local/share/ca-certificates/ac-subordonnee-insee.crt \
-    && update-ca-certificates \
+    && update-ca-certificates 
 
  
 #RUN R -e "install.packages(c('highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
