@@ -20,7 +20,12 @@ RUN curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACRacine.crt >> /us
     && curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACSubordonnee.crt >> /usr/local/share/ca-certificates/ac-subordonnee-insee.crt \
     && update-ca-certificates 
 
- 
+RUN echo " \
+        \n# Configure proxy \
+        \nhttp_proxy=${http_proxy} \
+        \nhttps_proxy=${https_proxy} \
+        \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
+
 #RUN R -e "install.packages(c('highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
