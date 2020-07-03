@@ -12,6 +12,7 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libssl-dev \
  libgdal-dev \
  libudunits2-dev \
+ libmagick++-dev \
  curl
 #libxml2-dev
 
