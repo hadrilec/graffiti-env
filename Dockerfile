@@ -13,8 +13,9 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libgdal-dev \
  libudunits2-dev \
  libmagick++-dev \
+ libxml2-dev\
  curl
-#libxml2-dev
+
 
 # Add certificates (config https)
 RUN curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACRacine.crt >> /usr/local/share/ca-certificates/ac-racine-insee.crt \
