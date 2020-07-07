@@ -13,7 +13,10 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libgdal-dev \
  libudunits2-dev \
  libmagick++-dev \
- libxml2-dev\
+ libxml2-dev \
+ libavfilter-dev \
+ libpoppler-cpp-dev \
+ libtesseract-dev \
  curl
 
 
@@ -30,10 +33,13 @@ RUN echo " \
 
 #RUN R -e "install.packages(c('highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
+RUN R -e "install.packages(c('highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE); library(highcharter)"
+RUN R -e "install.packages(c('magick'), repos='https://cran.rstudio.com/', dependencies=TRUE); library(magick)"
+
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
-RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch', 'RJSONIO','xml2', 'rvest','devtools', 'aws.s3', 'magick', 'idbr', 'wiesbaden'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch', 'RJSONIO','xml2', 'rvest','devtools', 'aws.s3', 'idbr', 'wiesbaden'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr')"
 
 
