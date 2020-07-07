@@ -17,6 +17,7 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libavfilter-dev \
  libpoppler-cpp-dev \
  libtesseract-dev \
+ cargo \
  curl
 
 
