@@ -17,6 +17,7 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libavfilter-dev \
  libpoppler-cpp-dev \
  libtesseract-dev \
+ tesseract-ocr-eng \
  cargo \
  curl
 
@@ -32,11 +33,8 @@ RUN echo " \
         \nhttps_proxy=${https_proxy} \
         \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
 
-#RUN R -e "install.packages(c('highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
-RUN R -e "install.packages(c('highcharter'), repos='https://cran.rstudio.com/', dependencies=TRUE); library(highcharter)"
-RUN R -e "install.packages(c('magick'), repos='https://cran.rstudio.com/', dependencies=TRUE); library(magick)"
-
+RUN R -e "install.packages(c('highcharter', 'tesseract', 'magick'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
