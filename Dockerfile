@@ -35,6 +35,7 @@ RUN echo " \
 
 
 RUN R -e "install.packages(c('highcharter', 'tesseract', 'magick'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "library(magick);str(magick::magick_config());stop()"
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
