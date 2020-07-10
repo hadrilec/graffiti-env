@@ -39,7 +39,7 @@ RUN R -e "install.packages(c('highcharter', 'tesseract', 'magick'), repos='https
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'rdbnomics'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch', 'RJSONIO','xml2', 'rvest','devtools', 'aws.s3', 'idbr', 'wiesbaden'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch','jsonlite' ,'RJSONIO','xml2', 'rvest','devtools', 'aws.s3', 'idbr', 'wiesbaden'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr')"
 
 
