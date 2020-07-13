@@ -33,14 +33,16 @@ RUN echo " \
         \nhttps_proxy=${https_proxy} \
         \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
 
-RUN R -e "install.packages(c('tools'), repos='https://cran.rstudio.com/', dependencies=TRUE);library(tools)"
-RUN R -e "install.packages(c('highcharter', 'tesseract', 'magick'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "install.packages(c('devtools'), repos=${cran_repo}, dependencies=TRUE)"
+RUN R -e "devtools::install_github('tutuchan/shinyflags'); library(shinyflags);stop()"
+
+RUN R -e "install.packages(c('tools', 'highcharter', 'tesseract', 'magick'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 #RUN R -e "library(magick);str(magick::magick_config());stop()"
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='http://cran.rstudio.com/')"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'rdbnomics', 'rwebstat'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch','jsonlite' ,'RJSONIO','xml2', 'rvest','devtools', 'aws.s3', 'idbr', 'wiesbaden'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr')"
+RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch','jsonlite' ,'RJSONIO','xml2', 'rvest', 'aws.s3', 'idbr', 'wiesbaden'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+
 
 
 
