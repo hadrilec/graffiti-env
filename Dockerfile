@@ -34,10 +34,9 @@ RUN echo " \
         \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
 
 RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRUE)"
-RUN R -e "devtools::install_github('tutuchan/shinyflags'); library(shinyflags)"
+RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr'); library(shinyflags)"
 
 RUN R -e "install.packages(c('tools', 'highcharter', 'tesseract', 'magick'), repos='${cran_repo}', dependencies=TRUE)"
-#RUN R -e "library(magick);str(magick::magick_config());stop()"
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='${cran_repo}')"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'rdbnomics', 'rwebstat'), repos='${cran_repo}', dependencies=TRUE)"
