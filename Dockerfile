@@ -46,10 +46,6 @@ RUN echo " \
         \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
         
         
-RUN R -e "install.packages(c('rmarkdown'), repos='https://cran.rstudio.com/', dependencies=TRUE);rmarkdown::pandoc_available();stop()"
-
-        
-        
 RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr'); library(shinyflags)"
 
@@ -61,5 +57,3 @@ RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch','jsonlite' ,'RJSONIO'
 
 
 #repos = 'https://cran.rstudio.com/'
-
-
