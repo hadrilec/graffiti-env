@@ -32,6 +32,8 @@ RUN echo " \
         \nhttp_proxy=${http_proxy} \
         \nhttps_proxy=${https_proxy} \
         \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
+        
+RUN R -e "install.packages(c('rwebstat'), repos='https://cran.rstudio.com/', dependencies=TRUE); library(rwebstat);webstat_client_ID <- 'd85fb7da-a306-469f-9b60-2e35d251611b';rwebstat::w_series_list('EXR');stop()"
 
 RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr'); library(shinyflags)"
@@ -39,7 +41,7 @@ RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_gith
 RUN R -e "install.packages(c('tools', 'highcharter', 'tesseract', 'magick'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='${cran_repo}')"
-RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'rdbnomics', 'rwebstat'), repos='${cran_repo}', dependencies=TRUE)"
+RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'rdbnomics'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch','jsonlite' ,'RJSONIO','xml2', 'rvest', 'aws.s3', 'idbr', 'wiesbaden'), repos='${cran_repo}', dependencies=TRUE)"
 
 #repos = 'https://cran.rstudio.com/'
