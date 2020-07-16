@@ -19,8 +19,20 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libtesseract-dev \
  tesseract-ocr-eng \
  cargo \
- curl
+ curl \
+ tzdata \
+ cabal-install \
+ imagemagick \
+ librsvg2-bin \
+ librsvg2-common \
+ zlib1g \
+ zlib1g-dev
 
+# we remember the path to pandoc in a special variable
+ENV PANDOC_DIR=/root/.cabal/bin/
+
+# add pandoc to the path
+ENV PATH=${PATH}:${PANDOC_DIR}
 
 # Add certificates (config https)
 RUN curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACRacine.crt >> /usr/local/share/ca-certificates/ac-racine-insee.crt \
@@ -33,6 +45,11 @@ RUN echo " \
         \nhttps_proxy=${https_proxy} \
         \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
         
+        
+RUN R -e "install.packages(c('rmarkdown'), repos='https://cran.rstudio.com/', dependencies=TRUE);rmarkdown::pandoc_available();stop()"
+
+        
+        
 RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr'); library(shinyflags)"
 
@@ -41,6 +58,7 @@ RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashbo
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='${cran_repo}')"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'rdbnomics', 'rwebstat'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch','jsonlite' ,'RJSONIO','xml2', 'rvest', 'aws.s3', 'idbr', 'wiesbaden'), repos='${cran_repo}', dependencies=TRUE)"
+
 
 #repos = 'https://cran.rstudio.com/'
 
