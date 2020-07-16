@@ -33,8 +33,6 @@ RUN echo " \
         \nhttps_proxy=${https_proxy} \
         \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
         
-RUN R -e "install.packages(c('rdbnomics'), repos='${cran_repo}', dependencies=TRUE); rdbnomics::rdb_series('toto');stop()"
-
 RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr'); library(shinyflags)"
 
