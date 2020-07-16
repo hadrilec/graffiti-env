@@ -33,7 +33,7 @@ RUN echo " \
         \nhttps_proxy=${https_proxy} \
         \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
         
-RUN R -e "install.packages(c('rwebstat'), repos='https://cran.rstudio.com/', dependencies=TRUE); library(rwebstat);webstat_client_ID <- 'd85fb7da-a306-469f-9b60-2e35d251611b';rwebstat::w_series_list('EXR');stop()"
+RUN R -e "install.packages(c('rwebstat'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
 RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr'); library(shinyflags)"
