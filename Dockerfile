@@ -44,7 +44,8 @@ RUN echo " \
         \nhttp_proxy=${http_proxy} \
         \nhttps_proxy=${https_proxy} \
         \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
-        
+RUN R -e "install.packages(c('readsdmx'), repos='https://cran.rstudio.com/', dependencies=TRUE);"
+  
 RUN R -e "install.packages(c('insee'), repos='https://cran.rstudio.com/', dependencies=TRUE);library(insee);get_idbank_list();stop('')"
 
 RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRUE)"
