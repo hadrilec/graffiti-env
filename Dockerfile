@@ -26,7 +26,8 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  librsvg2-bin \
  librsvg2-common \
  zlib1g \
- zlib1g-dev
+ zlib1g-dev \
+ libsodium-dev
 
 # we remember the path to pandoc in a special variable
 ENV PANDOC_DIR=/root/.cabal/bin/
@@ -47,11 +48,11 @@ RUN echo " \
 
 
 RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRUE)"
-RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr'); library(shinyflags)"
+RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr')"
 RUN R -e "install.packages(c('rlang'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
 RUN R -e "install.packages(c('readsdmx'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "install.packages(c('insee'), repos='https://cran.rstudio.com/', dependencies=TRUE);library(insee);get_idbank_list()"
+RUN R -e "install.packages(c('insee', 'rtsdata'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
 RUN R -e "install.packages(c('tools', 'highcharter', 'tesseract', 'magick'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='${cran_repo}', dependencies=TRUE)"
