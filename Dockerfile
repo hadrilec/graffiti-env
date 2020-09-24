@@ -27,7 +27,8 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  librsvg2-common \
  zlib1g \
  zlib1g-dev \
- libsodium-dev
+ libsodium-dev \
+ libsasl2-dev
 
 # we remember the path to pandoc in a special variable
 ENV PANDOC_DIR=/root/.cabal/bin/
