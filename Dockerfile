@@ -51,7 +51,7 @@ RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRU
 RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_github('sboysel/fredr')"
 RUN R -e "install.packages(c('rlang'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
-RUN R -e "install.packages(c('readsdmx', 'covid19mobility'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "install.packages(c('readsdmx', 'covid19mobility', 'mongolite'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "install.packages(c('insee', 'rtsdata'), repos='https://cran.rstudio.com/', dependencies=TRUE);library(insee);get_idbank_list();stop()"
 
 RUN R -e "install.packages(c('tools', 'highcharter', 'tesseract', 'magick'), repos='${cran_repo}', dependencies=TRUE)"
