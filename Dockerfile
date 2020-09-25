@@ -30,7 +30,6 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libsodium-dev \
  libsasl2-dev \
  libv8-dev \
- autoconfv \
  libtool \ 
  make \
  g++ \
