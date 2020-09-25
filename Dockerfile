@@ -31,12 +31,10 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libsasl2-dev \
  libv8-dev \
  autoconfv \
- automake \
  libtool \ 
  make \
  g++ \
  unzip\
- ldconfig \
  libprotobuf-dev \
  libjq-dev
 
@@ -65,11 +63,13 @@ RUN R -e "install.packages(c('rlang'), repos='https://cran.rstudio.com/', depend
 RUN R -e "install.packages(c('covid19mobility', 'mongolite', 'rtsdata'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "devtools::install_github('hadrilec/insee');insee::get_idbank_list()"
 
+RUN R -e "install.packages(c('protolite', 'jqr'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+
 RUN R -e "install.packages(c('tools', 'highcharter', 'tesseract', 'magick'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='${cran_repo}')"
 RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'rdbnomics', 'rwebstat'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch','jsonlite' ,'RJSONIO','xml2', 'rvest', 'aws.s3', 'idbr', 'wiesbaden'), repos='${cran_repo}', dependencies=TRUE)"
 
-
+#
 #repos = 'https://cran.rstudio.com/'
