@@ -30,7 +30,15 @@ RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/a
  libsodium-dev \
  libsasl2-dev \
  libv8-dev \
- libprotobuf-dev
+ autoconfv \
+ automake \
+ libtool \ 
+ make \
+ g++ \
+ unzip\
+ ldconfig \
+ libprotobuf-dev \
+ libjq-dev
 
 # we remember the path to pandoc in a special variable
 ENV PANDOC_DIR=/root/.cabal/bin/
