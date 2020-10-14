@@ -62,7 +62,7 @@ RUN R -e "install.packages(c('rlang'), repos='https://cran.rstudio.com/', depend
 RUN R -e "install.packages(c('covid19mobility', 'mongolite', 'rtsdata'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 RUN R -e "devtools::install_github('hadrilec/insee');insee::get_idbank_list()"
 
-RUN R -e "install.packages(c('protolite', 'jqr'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
+RUN R -e "install.packages(c('protolite', 'jqr', 'gtrendsR'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
 RUN R -e "install.packages(c('tools', 'highcharter', 'tesseract', 'magick'), repos='${cran_repo}', dependencies=TRUE)"
 RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='${cran_repo}', dependencies=TRUE)"
