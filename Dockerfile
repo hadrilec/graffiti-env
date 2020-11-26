@@ -60,7 +60,7 @@ RUN R -e "devtools::install_github('tutuchan/shinyflags');devtools::install_gith
 RUN R -e "install.packages(c('rlang'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
 RUN R -e "install.packages(c('covid19mobility', 'mongolite', 'rtsdata'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
-RUN R -e "devtools::install_github('hadrilec/insee');insee::get_idbank_list()"
+RUN R -e "devtools::install_github('InseeFr/R-Insee-Data');insee::get_idbank_list()"
 
 RUN R -e "install.packages(c('protolite', 'jqr', 'gtrendsR', 'BARIS'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
