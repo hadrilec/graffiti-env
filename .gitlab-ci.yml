@@ -2,7 +2,7 @@ stages:
     - build
 
 variables:
-  CONTAINER_RELEASE_API: "docker-registry.beta.innovation.insee.eu/hadrilec/graffiti-env"
+  CONTAINER_RELEASE_API: git-registry.lab.sspcloud.fr
 
 package:
   # Use stage build here, so the pages job may later pickup the created site.
