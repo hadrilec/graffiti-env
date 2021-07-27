@@ -45,18 +45,18 @@ ENV PANDOC_DIR=/root/.cabal/bin/
 ENV PATH=${PATH}:${PANDOC_DIR}
 
 # Add certificates (config https)
-RUN curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACRacine.crt >> /usr/local/share/ca-certificates/ac-racine-insee.crt \
-    && curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACSubordonnee.crt >> /usr/local/share/ca-certificates/ac-subordonnee-insee.crt \
-    && update-ca-certificates 
+# RUN curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACRacine.crt >> /usr/local/share/ca-certificates/ac-racine-insee.# crt \
+#    && curl http://bootstrap.alpha.innovation.insee.eu/ca-certs/ACSubordonnee.crt >> /usr/local/share/ca-certificates/# ac-subordonnee-insee.crt \
+#    && update-ca-certificates 
 
-RUN echo " \
-        \n# Configure proxy \
-        \nhttp_proxy=${http_proxy} \
-        \nhttps_proxy=${https_proxy} \
-        \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
+# RUN echo " \
+#        \n# Configure proxy \
+#        \nhttp_proxy=${http_proxy} \
+#        \nhttps_proxy=${https_proxy} \
+#        \nno_proxy=${no_proxy} " >> /usr/local/lib/R/etc/Renviron.site
 
 
-RUN R -e "install.packages(c('devtools'), repos='${cran_repo}', dependencies=TRUE)"
+RUN R -e "install.packages(c('devtools'), dependencies=TRUE)" #repos='${cran_repo}'
 
 RUN R -e "devtools::install_github('InseeFr/R-Insee-Data');insee::get_idbank_list()"
 
@@ -68,11 +68,11 @@ RUN R -e "install.packages(c('covid19mobility', 'mongolite', 'rtsdata'), repos='
 
 RUN R -e "install.packages(c('protolite', 'jqr', 'gtrendsR', 'BARIS'), repos='https://cran.rstudio.com/', dependencies=TRUE)"
 
-RUN R -e "install.packages(c('tools', 'highcharter', 'tesseract', 'magick'), repos='${cran_repo}', dependencies=TRUE)"
-RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), repos='${cran_repo}', dependencies=TRUE)"
-RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE, repos='${cran_repo}')"
-RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'rdbnomics', 'rwebstat'), repos='${cran_repo}', dependencies=TRUE)"
-RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch','jsonlite' ,'RJSONIO','xml2', 'rvest', 'aws.s3', 'idbr', 'wiesbaden'), repos='${cran_repo}', dependencies=TRUE)"
+RUN R -e "install.packages(c('tools', 'highcharter', 'tesseract', 'magick'), dependencies=TRUE)"
+RUN R -e "install.packages(c('shiny', 'tidyverse','shinydashboard', 'shinydashboardPlus', 'shinyWidgets', 'shinyjs'), dependencies=TRUE)"
+RUN R -e "install.packages(c('DT', 'rhandsontable', 'lubridate', 'zoo', 'rmarkdown', 'plotly'),dependencies=TRUE)"
+RUN R -e "install.packages(c('RColorBrewer', 'ggthemes', 'eia', 'eurostat', 'Quandl', 'rdbnomics', 'rwebstat'), dependencies=TRUE)"
+RUN R -e "install.packages(c('saqgetr', 'rsdmx', 'pdfetch','jsonlite' ,'RJSONIO','xml2', 'rvest', 'aws.s3', 'idbr', 'wiesbaden'), dependencies=TRUE)"
 
 #
 #repos = 'https://cran.rstudio.com/'
