@@ -8,7 +8,7 @@ ENV no_proxy=".mesos,.thisdcos.directory,.dcos.directory,.zk,127.0.0.1,localhost
 
 # Install required packages
 # RUN echo 'Acquire::http::Proxy "http://proxy-rie.http.insee.fr:8080";' >> /etc/apt/apt.conf &&
-RUN apt-get update -q \
+RUN apt-get --allow-releaseinfo-change update -q \
  && DEBIAN_FRONTEND=noninteractive apt-get install -yq --no-install-recommends --fix-missing \
  libssl-dev \
  libgdal-dev \
